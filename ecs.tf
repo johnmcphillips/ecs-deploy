@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "ECR" {
-  name = "ecs-demo"
+  name = var.ecr_name
   image_tag_mutability = "MUTABLE"
   tags = {
     Name = "ECS ECR Repository"

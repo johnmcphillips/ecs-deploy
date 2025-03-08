@@ -29,7 +29,7 @@ variable "PublicSubnet01" {
   type = map(string)
   default = {
     "name" = "PublicSubnet01"
-    "cidr_block" = "10.100.0.0/24"
+    "cidr_block" = "10.0.100.0/24"
   }
 }
 
@@ -38,7 +38,7 @@ variable "PrivateSubnet01" {
   type = map(string)
   default = {
     "name" = "PrivateSubnet01"
-    "cidr_block" = "10.1.0.0/24"
+    "cidr_block" = "10.0.1.0/24"
   }
 }
 ### End VPC Variables ###
@@ -71,5 +71,9 @@ variable "container_port" {
   description = "Container Port"
   default     = "8080"
   
+}
+
+variable "ecr_name" {
+  default = "ecs-demo"
 }
 ### End ECS Variables ###
