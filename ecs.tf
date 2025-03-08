@@ -21,7 +21,7 @@ resource "aws_ecs_service" "ECS_Service" {
     launch_type = "FARGATE"
     network_configuration {
         subnets = [aws_subnet.PrivateSubnet01.id]
-        security_groups = [aws_security_group.ECS_Security_Group.id]
+        security_groups = [aws_security_group.ECS_SG.id]
         assign_public_ip = false
     }
     load_balancer {
