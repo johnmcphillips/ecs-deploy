@@ -33,6 +33,15 @@ variable "PublicSubnet01" {
   }
 }
 
+variable "PublicSubnet02" {
+  description = "PublicSubnet02 Data"
+  type = map(string)
+
+  default = {
+    "name" = "PublicSubnet02"
+    "cidr_block" = "10.0.101.0/24"
+  }
+}
 variable "PrivateSubnet01" {
   description = "PrivateSubnet01 Data"
   type = map(string)
