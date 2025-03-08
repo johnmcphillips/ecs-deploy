@@ -25,7 +25,7 @@ resource "aws_ecs_task_definition" "ECS_Task_Definition" {
     image = "${aws_ecr_repository.ECR.repository_url}:latest"
     portMappings = [{
       containerPort = var.container_port
-      hostPort = var.container_port
+      hostPort = var.host_port
       protocol = "tcp"
     }]
     logConfiguration = {

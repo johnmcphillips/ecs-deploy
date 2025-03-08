@@ -69,7 +69,13 @@ variable "container_name" {
 
 variable "container_port" {
   description = "Container Port"
-  default     = "8080"
+  default     = 8080
+  
+}
+
+variable "host_port" {
+  description = "Host Port"
+  default     = 8080
   
 }
 
