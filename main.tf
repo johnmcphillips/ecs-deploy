@@ -2,6 +2,10 @@ provider "aws" {
   region = var.region
 }
 
+resource "aws_cloudwatch_log_group" "ECS_LOG" {
+  name = "/ecs/${var.ecs_task_name}"
+  retention_in_days = 1
+}
 resource "aws_security_group" "ECS_SG" {
   vpc_id = aws_vpc.main.id
  
