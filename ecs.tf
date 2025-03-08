@@ -13,6 +13,29 @@ resource "aws_ecs_cluster" "ECS" {
   }
 }
 
+resource "aws_ecs_service" "ECS_Service" {
+    name = var.ecs_service_name
+    cluster = aws_ecs_cluster.ECS.id
+    task_definition = aws_ecs_task_definition.ECS_Task_Definition.arn
+    desired_count = 1
+    launch_type = "FARGATE"
+    network_configuration {
+        subnets = [aws_subnet.PrivateSubnet01.id]
+        security_groups = [aws_security_group.ECS_Security_Group.id]
+        assign_public_ip = false
+    }
+    load_balancer {
+        target_group_arn = aws_lb_target_group.ECS_TG.arn
+        container_name = var.container_name
+        container_port = var.container_port
+    }
+    depends_on = [aws_lb_listener.ALB_HTTP]
+    tags = {
+        Name = "ECS Demo Service"
+    }
+  
+}
+
 resource "aws_ecs_task_definition" "ECS_Task_Definition" {
   family = var.ecs_task_name
   network_mode = "awsvpc"
