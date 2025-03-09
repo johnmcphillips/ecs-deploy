@@ -19,7 +19,7 @@ resource "aws_security_group" "ECS_SG" {
   }
 }
 
-resource "aws_security_groupe_rule" "ECS_SG_Ingress" {
+resource "aws_security_group_rule" "ECS_SG_Ingress" {
   type              = "ingress"
   from_port         = var.container_port
   to_port           = var.container_port
