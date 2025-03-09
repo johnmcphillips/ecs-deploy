@@ -86,7 +86,7 @@ resource "aws_lb_target_group" "ECS_TG" {
 
 resource "aws_lb_listener" "ALB_HTTP" {
   load_balancer_arn = aws_lb.ALB.arn
-  port              = 80
+  port              = var.container_port
   protocol          = "HTTP"
 
   default_action {
