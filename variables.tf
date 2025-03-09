@@ -55,7 +55,7 @@ variable "PrivateSubnet02" {
   description = "PrivateSubnet02 Data"
   type        = map(string)
   default = {
-    "name"       = "PrivateSubnet01"
+    "name"       = "PrivateSubnet02"
     "cidr_block" = "10.0.2.0/24"
   }
 }
