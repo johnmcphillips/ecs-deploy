@@ -10,8 +10,8 @@ resource "aws_security_group" "ECS_SG" {
   vpc_id = aws_vpc.main.id
 
   ingress {
-    from_port       = 8080
-    to_port         = 8080
+    from_port       = [80, 443]
+    to_port         = var.container_port
     protocol        = "tcp"
     security_groups = [aws_security_group.ALB_SG.id]
   }
@@ -86,7 +86,7 @@ resource "aws_lb_target_group" "ECS_TG" {
 
 resource "aws_lb_listener" "ALB_HTTP" {
   load_balancer_arn = aws_lb.ALB.arn
-  port              = var.container_port
+  port              = 80
   protocol          = "HTTP"
 
   default_action {
