@@ -8,13 +8,6 @@ resource "aws_cloudwatch_log_group" "ECS_Log_Group" {
 }
 resource "aws_security_group" "ECS_SG" {
   vpc_id = aws_vpc.main.id
-
-  ingress {
-    from_port       = var.container_port
-    to_port         = var.container_port
-    protocol        = "tcp"
-    source_security_group_id = aws_security_group.ALB_SG.id
-  }
   egress {
     from_port   = 0
     to_port     = 0
@@ -24,6 +17,15 @@ resource "aws_security_group" "ECS_SG" {
   tags = {
     Name = "ECS Security Group"
   }
+}
+
+resource "aws_security_groupe_rule" "ECS_SG_Ingress" {
+  type              = "ingress"
+  from_port         = var.container_port
+  to_port           = var.container_port
+  protocol          = "tcp"
+  security_group_id = aws_security_group.ECS_SG.id
+  source_security_group_id = aws_security_group.ALB_SG.id
 }
 
 resource "aws_security_group" "ALB_SG" {
