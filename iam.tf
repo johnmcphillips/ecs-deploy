@@ -20,13 +20,13 @@ resource "aws_iam_role" "ECS_Task_Role" {
 resource "aws_iam_policy" "ECS_Task_Policy" {
   name        = "ECS-Task-Policy"
   description = "Permissions for ECS tasks"
-  
+
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
-        Action   = [
+        Effect = "Allow"
+        Action = [
           "ecr:GetDownloadUrlForLayer",
           "ecr:BatchGetImage",
           "ecr:BatchCheckLayerAvailability"
@@ -62,6 +62,6 @@ resource "aws_iam_role_policy_attachment" "ECS_Task_Policy_Attachment" {
 }
 
 resource "aws_iam_role_policy_attachment" "ECS_BuiltinTask_Policy_Attachment" {
-  role = aws_iam_role.ECS_Task_Role.name
+  role       = aws_iam_role.ECS_Task_Role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }

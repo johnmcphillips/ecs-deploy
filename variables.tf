@@ -26,28 +26,37 @@ variable "vpc_cidr_block" {
 
 variable "PublicSubnet01" {
   description = "PublicSubnet01 Data"
-  type = map(string)
+  type        = map(string)
   default = {
-    "name" = "PublicSubnet01"
+    "name"       = "PublicSubnet01"
     "cidr_block" = "10.0.100.0/24"
   }
 }
 
 variable "PublicSubnet02" {
   description = "PublicSubnet02 Data"
-  type = map(string)
+  type        = map(string)
 
   default = {
-    "name" = "PublicSubnet02"
+    "name"       = "PublicSubnet02"
     "cidr_block" = "10.0.101.0/24"
   }
 }
 variable "PrivateSubnet01" {
   description = "PrivateSubnet01 Data"
-  type = map(string)
+  type        = map(string)
   default = {
-    "name" = "PrivateSubnet01"
+    "name"       = "PrivateSubnet01"
     "cidr_block" = "10.0.1.0/24"
+  }
+}
+
+variable "PrivateSubnet02" {
+  description = "PrivateSubnet02 Data"
+  type        = map(string)
+  default = {
+    "name"       = "PrivateSubnet01"
+    "cidr_block" = "10.0.2.0/24"
   }
 }
 ### End VPC Variables ###
@@ -61,31 +70,31 @@ variable "ecs_cluster_name" {
 variable "ecs_service_name" {
   description = "ECS Service Name"
   default     = "ecs-demo-service"
-  
+
 }
 
 variable "ecs_task_name" {
   description = "ECS Task Name"
   default     = "ecs-demo-task"
-  
+
 }
 
 variable "container_name" {
   description = "Container Name"
   default     = "ecs-demo-container"
-  
+
 }
 
 variable "container_port" {
   description = "Container Port"
   default     = 8080
-  
+
 }
 
 variable "host_port" {
   description = "Host Port"
   default     = 8080
-  
+
 }
 
 variable "ecr_name" {
