@@ -13,7 +13,7 @@ resource "aws_security_group" "ECS_SG" {
     from_port       = var.container_port
     to_port         = var.container_port
     protocol        = "tcp"
-    source_security_groups = [aws_security_group.ALB_SG.id]
+    source_security_group_id = aws_security_group.ALB_SG.id
   }
   egress {
     from_port   = 0
