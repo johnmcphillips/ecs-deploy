@@ -1,6 +1,6 @@
 FROM nginx:latest
-
-COPY src/nginx.conf /etc/nginx/nginx.conf
+RUN rm /etc/nginx/conf.d/default.conf
+COPY src/nginx.conf /etc/nginx/conf.d/default.conf
 COPY src/index.html /usr/share/nginx/html/index.html
 
 EXPOSE 8080
